@@ -64,12 +64,27 @@
         <tbody>
           <!-- Na tag que se repete aplique th:each -->
           <tr th:each="financeiro : ${listaFinancas}">
+            <td>
+              <a 
+                th:href="'/financas/'+${financeiro.idCliente}" 
+                th:text="${financeiro.descricao}">
+              </a>
+            </td>
             <td th:text="${financeiro.descricao}"></td>
             <td th:text="${financeiro.valor}"></td>
             <td th:text="${financeiro.tipo}"></td>
             <td th:text="${financeiro.data}"></td>
-            <td><button>Excluir</button></td>
-            <td><button>Editar</button></td>
+            <td>
+              <form action="/financas/delete" method="post">
+                <input type="hidden" name="id" th:value="${financeiro.idCliente}"/>
+                <button type="submit">Excluir</button>
+              </form>
+            </td>
+            <td>
+              <a th:href="'/financas/'+${financeiro.idCliente}+'/edit'">
+                <button>Editar</button>
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>
