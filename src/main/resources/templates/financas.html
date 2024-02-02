@@ -8,7 +8,6 @@
 
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-
   <link rel="stylesheet" href="/css/styles2.css" />
 </head>
 <body>
@@ -26,30 +25,7 @@
         Total: R$
         <span class="total">0.00</span>
       </div>
-    </div>
-    <div class="newItem">
-      <div class="divDesc">
-        <label for="desc">Descrição</label>
-        <input type="text" id="desc" />
-      </div>
-      <div class="divAmount">
-        <label for="amount">Valor</label>
-        <input type="number" id="amount" />
-      </div>
-      <div class="divType">
-        <label for="type">Tipo</label>
-        <select id="type">
-          <option>Entrada</option>
-          <option>Saída</option>
-        </select>
-      </div>
-      <div class="divData">
-        <label for="data">Data</label>
-        <input type="date" name="dataRealizada" id="dataRealizada" required />
-      </div>
-      <button id="btnNew">Incluir</button>
-    </div>
-    <div class="divTable">
+    </div><br>
       <table>
         <thead>
           <tr>
@@ -64,12 +40,12 @@
         <tbody>
           <!-- Na tag que se repete aplique th:each -->
           <tr th:each="financeiro : ${listaFinancas}">
-            <td>
+            <!-- <td>
               <a 
                 th:href="'/financas/'+${financeiro.idCliente}" 
                 th:text="${financeiro.descricao}">
               </a>
-            </td>
+            </td> -->
             <td th:text="${financeiro.descricao}"></td>
             <td th:text="${financeiro.valor}"></td>
             <td th:text="${financeiro.tipo}"></td>
@@ -87,38 +63,28 @@
             </td>
           </tr>
         </tbody>
-      </table>
-  </main>  
+      </table>   
+      <h2>Novo Lançamento:</h2> <br>
+      <form action="/financas/create" method="post">
+        <!-- Na inserção, atente-se para os campos do Model -->
+        <label for="descricao">Descrição: <span style="color: red">*</span></label>
+        <input type="text" name="descricao" id="descricao" maxlength="100" required/>
 
-  <script src="script.js"></script>
+        <label for="valor">Valor:<span style="color: red">*</span></label>
+        <input type="number" name="valor" id="valor" required/>
+
+        <label for="tipo">Tipo:<span style="color: red">*</span></label>
+        <select name="tipo" id="tipo" required>
+        <option value="entrada">ENTRADA</option>
+        <option value="saida">SAÍDA</option>
+        </select>
+
+        <label for="data">Data:<span style="color: red">*</span></label>
+        <input type="date" name="data" id="data" required/>
+
+        <button type="submit">INCLUIR</button>
+      </form><br>
+  </main>  
+  <script src="/js/main.js"></script>
 </body>
 </html>
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receita</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-  </head>
-  <body>
-    <main>
-      <a href="/home">&#9666; Pagina Inicial</a><br>
-      <h1>Receitas</h1>
-      <p>Lista Movimentação Financeira</p>
-      <hr />
-      <table>
-        <thead>
-          <tr>
-            <th>Descrição</th>
-            <th>Valor</th>
-            <th>Categoria</th>
-            <th>Data</th>
-            <th>Editar</th>
-            <th>Excluir</th>
-          </tr>
-        </thead>
-    </main>
-    <script src="/js/main.js"></script>
-    </body>
-    </html> -->
