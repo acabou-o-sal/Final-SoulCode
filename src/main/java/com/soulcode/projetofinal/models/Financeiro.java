@@ -18,6 +18,9 @@ public class Financeiro {
     @Column(nullable = false, length = 100)
     private String descricao;
 
+    @Column(nullable = false, length = 100)
+    private String categoria;
+
     @Column(nullable = false)
     private Double valor;
 
@@ -31,9 +34,10 @@ public class Financeiro {
         
     }
 
-    public Financeiro(Integer idCliente, String descricao, Double valor, String tipo, LocalDate data) {
+    public Financeiro(Integer idCliente, String descricao, String categoria, Double valor, String tipo, LocalDate data) {
         this.idCliente = idCliente;
         this.descricao = descricao;
+        this.categoria = categoria;
         this.valor = valor;
         this.tipo = tipo;
         this.data = data;
@@ -54,6 +58,15 @@ public class Financeiro {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
 
     public Double getValor() {
         return valor;
