@@ -23,6 +23,7 @@
         
         <label for="categoria">Categoria:<span style="color: red">*</span></label>
         <select th:value="${financeiro.categoria}" name="categoria" id="categoria" required>
+          <option value="">Todas as categorias</option>
           <option value="MORADIA">MORADIA</option>
           <option value="ALIMENTAÇÃO">ALIMENTAÇÃO</option>
           <option value="TRANSPORTE">TRANSPORTE</option>

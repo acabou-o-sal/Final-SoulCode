@@ -27,3 +27,5 @@ function atualizarValores() {
 document.addEventListener('DOMContentLoaded', function() {
     atualizarValores();
 });
+
+
