@@ -9,5 +9,9 @@ import com.soulcode.projetofinal.models.Financeiro;
 
 @Repository
 public interface FiltroRepository extends JpaRepository <Financeiro, Integer>{
-    
+    // Query Method para filtrar por categoria
+    List<Financeiro> findByCategoria(String categoria);
+
+    // Query Method para filtrar por intervalo de datas
+    List<Financeiro> findByDataBetween(LocalDate dataInicio, LocalDate dataFim);
 } 

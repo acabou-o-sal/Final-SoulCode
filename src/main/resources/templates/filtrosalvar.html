@@ -13,8 +13,7 @@
 <body>
   <main>
     <a href="/">&#9666; Voltar</a> <br>
-
-    <!-- Formulário de Filtragem por Categoria -->
+    
     <form action="/filtrarPorCategoria" method="post">
       <label for="categoriaFilter">Filtrar por Categoria:</label>
       <select name="categoria" id="categoriaFilter">
@@ -27,42 +26,37 @@
         <option value="DÍVIDAS">DÍVIDAS</option>
         <option value="PESSOAL">PESSOAL</option>
       </select>
-      <button type="submit">Filtrar por Categoria</button>
+      <button type="submit">Filtrar por Categoria</button><hr>
+
+      <form action="/filtrarPorDatas" method="post">
+        <label for="dataInicio">Data Início:</label>
+        <input type="date" id="dataInicio" name="dataInicio">
+    
+        <label for="dataFim">Data Fim:</label>
+        <input type="date" id="dataFim" name="dataFim">
+    
+        <button type="submit">Filtrar por Datas</button>
     </form>
 
-    <!-- Formulário de Filtragem por Datas -->
-    <form action="/filtrarPorDatas" method="post">
-      <label for="dataInicio">Data Início:</label>
-      <input type="date" id="dataInicio" name="dataInicio">
-
-      <label for="dataFim">Data Fim:</label>
-      <input type="date" id="dataFim" name="dataFim">
-
-      <button type="submit">Filtrar por Datas</button>
-    </form>
-
-    <hr>
-    <table>
-      <thead>
-        <tr>
-          <th>Descrição</th>
-          <th>Categoria</th>
-          <th>Valor</th>
-          <th>Tipo</th>
-          <th>Data</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Na tag que se repete aplique th:each -->
-        <tr th:each="financeiro : ${listaFinancas}">
-          <td th:text="${financeiro.descricao}"></td>
-          <td th:text="${financeiro.categoria}"></td>
-          <td th:text="${financeiro.valor}"></td>
-          <td th:text="${financeiro.tipo}"></td>
-          <td th:text="${financeiro.data}"></td>
-        </tr>
-      </tbody>
-    </table>
+      <hr>
+      <table>
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Categoria</th>
+            <th >Valor</th>
+            <th >Tipo</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Na tag que se repete aplique th:each -->
+          <tr th:each="financeiro : ${listaFinancas}">
+            <td th:text="${financeiro.descricao}"></td>
+            <td th:text="${financeiro.categoria}"></td>
+            <td th:text="${financeiro.valor}"></td>
+            <td th:text="${financeiro.tipo}"></td>
+            <td th:text="${financeiro.data}"></td>
   </main>  
   <script src="/js/main.js"></script>
 </body>
